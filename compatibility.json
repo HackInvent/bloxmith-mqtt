@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "kind": "mqtt",
+  "block_version": "0.1.0",
+  "maintained_by": "HackInvent",
+  "source": {
+    "algorithm": "block-source-v1",
+    "sha256": "c33af40f876493a2bbcf6bd8b45528c2aab99903cf44b989af3aa99997ed35d4"
+  },
+  "bloxsmith_compatibility": [
+    "1.0.9"
+  ],
+  "tested_with_bloxsmith": "1.0.9",
+  "validations": [
+    {
+      "bloxsmith_version": "1.0.9",
+      "framework_commit": "f1a87f6369d2acfb8be41d23ea849384cd461c86",
+      "framework_source_sha256": "66e36a13fd9a23a0a0576ec81552d6e479671db6db9b8692cc7486c5aac4f3b8",
+      "tested_at": "2026-10-04T18:21:42.485453+00:00",
+      "status": "passed",
+      "installation_mode": "bundled",
+      "suite_paths": [
+        "tests/F5.01_mqtt.py",
+        "tests/F5.02_mqtt_runtime.py",
+        "tests/F8.01_mqtt_ui.py"
+      ],
+      "suite_count": 3,
+      "report_sha256": "706a15e229384da7777adc9a7476f460e7dbaab27f60780f068b1b96b12e068d"
+    }
+  ]
+}

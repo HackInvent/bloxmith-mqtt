@@ -1,0 +1,148 @@
+[
+  {
+    "key": "broker_host",
+    "label": "Broker host",
+    "help": "Explicit hostname or IP; empty leaves the block inactive. Never supplied by graph messages."
+  },
+  {
+    "key": "broker_port",
+    "label": "Broker port",
+    "type": "integer",
+    "min": 1,
+    "max": 65535,
+    "help": "TLS brokers commonly use 8883; set the actual configured port."
+  },
+  {
+    "key": "tls",
+    "label": "Use verified TLS",
+    "type": "boolean",
+    "help": "Certificate and hostname verification cannot be bypassed. Disable only for anonymous trusted local tests."
+  },
+  {
+    "key": "secret_ref",
+    "label": "Wallet reference",
+    "help": "Optional secret:// reference to JSON with username and password. Credentials require TLS."
+  },
+  {
+    "key": "subscriptions",
+    "label": "Subscribed topic filters",
+    "type": "json",
+    "rows": 4,
+    "help": "Array of MQTT filters. + matches one level; # must be the final whole level. Maximum 16."
+  },
+  {
+    "key": "publish_topics",
+    "label": "Allowed publish filters",
+    "type": "json",
+    "rows": 4,
+    "help": "An empty list disables publishing. Incoming requests cannot broaden this allowlist."
+  },
+  {
+    "key": "payload_format",
+    "label": "Payload format",
+    "type": "select",
+    "options": [
+      "json",
+      "text"
+    ],
+    "help": "Strict JSON or UTF-8 text. Binary audio is not transported here."
+  },
+  {
+    "key": "ca_file",
+    "label": "Additional CA file",
+    "advanced": true,
+    "help": "Optional trusted PEM CA file, resolved relative to the application root."
+  },
+  {
+    "key": "qos",
+    "label": "MQTT QoS",
+    "type": "integer",
+    "min": 0,
+    "max": 1,
+    "advanced": true,
+    "help": "QoS 0 sends without broker acknowledgement; QoS 1 can deliver duplicates. Not exactly-once business processing."
+  },
+  {
+    "key": "allow_retained",
+    "label": "Allow retained messages",
+    "type": "boolean",
+    "advanced": true,
+    "help": "Allow retained reception and explicit retained publishing. Off by default."
+  },
+  {
+    "key": "clean_session",
+    "label": "Start a clean broker session",
+    "type": "boolean",
+    "advanced": true,
+    "help": "When disabled, configure a unique stable client ID. Broker retention does not persist this block’s outgoing queue."
+  },
+  {
+    "key": "client_id",
+    "label": "Client ID",
+    "advanced": true,
+    "help": "Optional for clean sessions; otherwise required. Never share one between concurrently running nodes."
+  },
+  {
+    "key": "keepalive_sec",
+    "label": "Keepalive (seconds)",
+    "type": "integer",
+    "min": 10,
+    "max": 120,
+    "advanced": true,
+    "help": "Bounded protocol keepalive interval."
+  },
+  {
+    "key": "connect_timeout_sec",
+    "label": "Connection timeout (seconds)",
+    "type": "integer",
+    "min": 1,
+    "max": 30,
+    "advanced": true,
+    "help": "Whole connection/subscription deadline, including DNS. Stop terminates the supervised helper."
+  },
+  {
+    "key": "reconnect_attempts",
+    "label": "Automatic reconnect attempts",
+    "type": "integer",
+    "min": 0,
+    "max": 10,
+    "advanced": true,
+    "help": "Additional attempts after a failure. Explicit resume can restart a stopped connection."
+  },
+  {
+    "key": "reconnect_delay_sec",
+    "label": "Reconnect delay (seconds)",
+    "type": "integer",
+    "min": 1,
+    "max": 60,
+    "advanced": true,
+    "help": "Wait between bounded attempts. No automatic replay of uncertain outgoing requests."
+  },
+  {
+    "key": "max_payload_bytes",
+    "label": "Payload limit (bytes)",
+    "type": "integer",
+    "min": 1,
+    "max": 65536,
+    "advanced": true,
+    "help": "Maximum UTF-8 bytes per payload. Oversized messages are refused."
+  },
+  {
+    "key": "max_queue",
+    "label": "Pending publish limit",
+    "type": "integer",
+    "min": 1,
+    "max": 64,
+    "advanced": true,
+    "help": "Bounded outstanding requests. Disconnection reports uncertainty instead of retrying them."
+  },
+  {
+    "key": "max_messages_per_sec",
+    "label": "Incoming rate limit",
+    "type": "integer",
+    "min": 1,
+    "max": 200,
+    "advanced": true,
+    "help": "Disconnect visibly on overload instead of growing an unbounded application queue."
+  }
+]
